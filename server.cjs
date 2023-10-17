@@ -7,11 +7,22 @@ const PORT = 3000;
 const app = express();
 
 
+// allows us to use process.env (get variables from .env file)
+require('dotenv').config();
+
+
+require('./config/db.cjs');
+
+
 app.use(cors({
     origin: "*"
 }))
 
 app.use(morgan('dev'))
+
+
+
+
 
 
 app.use(express.json()); // adds .body to the request
