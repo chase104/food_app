@@ -6,6 +6,8 @@ const morgan = require('morgan')
 const PORT = 3000;
 const app = express();
 
+const Fruit = require('./models/Fruit.cjs')
+
 
 // allows us to use process.env (get variables from .env file)
 require('dotenv').config();
@@ -28,11 +30,10 @@ app.use(morgan('dev'))
 app.use(express.json()); // adds .body to the request
 
 
-// serve the html and js of our react app (dist folder)
-const fruits = [];
+
 
 app.get("/fruits", (req, res) => {
-    res.send(fruits)
+    // res.send(fruits)
 })
 
 
@@ -43,7 +44,7 @@ app.get("/", (req, res) => {
 app.post("/fruits", (req,res) => {
     console.log(req.body);
     let fruit = req.body;
-    fruits.push(fruit);
+    Fruit.create(fruit);
     res.send("Route is good")
 })
 
