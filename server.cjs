@@ -32,8 +32,9 @@ app.use(express.json()); // adds .body to the request
 
 
 
-app.get("/fruits", (req, res) => {
-    // res.send(fruits)
+app.get("/fruits", async (req, res) => {
+    let fruitsFromDB = await Fruit.find();
+    res.send(fruitsFromDB);
 })
 
 
@@ -41,10 +42,11 @@ app.get("/", (req, res) => {
     res.send("here is your valuable data")
 })
 
-app.post("/fruits", (req,res) => {
+app.post("/fruits", async (req,res) => {
     console.log(req.body);
     let fruit = req.body;
-    Fruit.create(fruit);
+   let responseFromDB = await Fruit.create(fruit);
+   console.log(responseFromDB);
     res.send("Route is good")
 })
 
