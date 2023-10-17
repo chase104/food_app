@@ -11,10 +11,10 @@ function App() {
     <div>
       <nav>
         <Link to="/">
-          Home
+          <button>Home</button>
         </Link>
         <Link to="/create">
-          Create
+          <button>Create</button>
         </Link>
       </nav>
       <Routes>

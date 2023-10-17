@@ -18,12 +18,22 @@ app.use(express.json()); // adds .body to the request
 
 
 // serve the html and js of our react app (dist folder)
+const fruits = [];
 
+app.get("/fruits", (req, res) => {
+    res.send(fruits)
+})
 
 
 app.get("/", (req, res) => {
     res.send("here is your valuable data")
+})
 
+app.post("/fruits", (req,res) => {
+    console.log(req.body);
+    let fruit = req.body;
+    fruits.push(fruit);
+    res.send("Route is good")
 })
 
 
